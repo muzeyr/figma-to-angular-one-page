@@ -1,0 +1,344 @@
+$dark-color: #2b2d42;
+$light-color: #fefefe;
+$red-color: #d80032;
+$cyan-color: #41ead4;
+
+$red-hover-color: #be0732;
+$cyan-hover-color: #6af3e1;
+
+* {
+    margin:0;
+    box-sizing:  border-box;
+}
+body {
+    font-family:  "Roboto", sans-serif;
+
+}
+
+.wrapper {
+    width: 1152px;
+    margin: 0 auto;
+    padding:  0 100px;
+
+}
+p {
+    line-height: 2;
+    margin-bottom: 20px;
+}
+section {
+    padding-top: 100px;
+    
+}
+
+section p {
+    color: $dark-color;
+
+}
+/* Header */
+.desktop-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $light-color;
+    box-shadow: 0px 3px 11px rgba(0, 0, 0, 0.1);
+    border-radius: 24px;
+    padding: 2px 30px;
+    padding-right: 0;
+
+    position: fixed;
+    z-index: 200;
+    width: calc(1142px - 200px);
+    top: 28px;
+
+}
+
+.desktop-nav .menu-items {
+    display: flex;
+    list-style: none;
+
+}
+
+.desktop-nav .menu-items li {
+    margin: 0 20px;
+}
+
+.desktop-nav .menu-items li:nth-last-of-type(1) { 
+    margin-right: 0;
+
+}
+.desktop-nav .menu-items li a {
+    text-decoration: none;
+    color: $dark-color;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    }
+.desktop-nav .menu-items li a.active::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: $red-color;
+    left: 0;
+    bottom: -14px;
+}
+
+.desktop-nav .menu-items li a.btn {
+    color: $light-color;
+}
+
+a.btn {
+    background : $red-color;
+    color: $light-color;
+    border-radius: 24px;
+    padding: 14px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 400ms;
+
+}
+a.btn.cyan {
+    background: $cyan-color;
+    color:$dark-color;
+    font-weight: bold;
+
+}
+ a.btn:hover {
+     background: $red-hover-color;
+ }
+a.btn.cyan:hover {
+    background: $cyan-hover-color;
+}
+
+/* Hero Section*/
+.hero-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.hero-container .left {
+    flex: 1;
+
+}
+
+.hero-container .left p {
+    font-size: 24px;
+}
+.hero-container .left h1 {
+    font-size: 36px;
+    font-family: "Montserrat", sans-serif;
+    margin: 8px 0 28px 0;
+
+}
+.hero-container .left .gt {
+    color: $red-color;
+}
+.hero-container .left .btn {
+    margin-right: 20px;
+}
+.hero-container .right .btn {
+    margin-right: 30px;
+}
+
+
+/* Hero BG and polygon*/
+.hero-bg {
+    position: absolute;
+    bottom:0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+
+}
+
+.hero-container .polygon {
+    position: absolute;
+    z-index: -1;
+    top:100px;
+    left:240px;
+
+}
+.hero-container .polygon2 {
+    position: absolute;
+    z-index: -1;
+    top:100px;
+    left:480px;
+
+}
+.hero-container .polygon3 {
+    position: absolute;
+    z-index: -1;
+    top: 300px;
+    left: 540px;
+
+}
+
+/* Animation */
+
+.desktop-nav {
+    animation: fadeDown 1000ms forwards;
+    opacity: 0;
+}
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+
+    }
+}
+
+.hero-container .left p {
+    animation: fadeIn 800ms forwards;
+    opacity: 0;
+    animation-delay: 400ms;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+
+    }
+}
+
+.hero-container .left h1 {
+    animation: fadeToRight 800ms forwards cubic-bezier(0.22,0.33,0,1.54);
+    opacity: 0;
+    animation-delay: 800ms;
+
+}
+@keyframes fadeToRight {
+    from{
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to  {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+
+
+.hero-container .left .btn:nth-last-of-type(1) {
+    animation:  fadeIn 1000ms forwards;
+    opacity: 0;
+    animation-delay: 1400ms;
+}
+
+.hero-container .left .btn:nth-last-of-type(1) {
+    animation:  fadeIn 1000ms forwards;
+    opacity: 0;
+    animation-delay: 1600ms;
+}
+
+.hero-container .right {
+    animation:  fadeToLeft 1200ms forwards;
+    opacity: 0;
+    animation-delay: 900ms;
+} 
+@keyframes fadeToLeft{
+    from {
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+
+    }
+}
+/*
+2 animasyon olacak,
+polygon1 fadeIn animasyonununu kullanacak,
+polygon1 rotate animasyonununu kullanacak,
+
+*/
+.hero-container .polygon,
+.hero-container .polygon2,
+.hero-container .polygon3 {
+    opacity: 0;
+    animation-name: fadeIn, rotate;
+    animation-duration: 800ms,80s;
+    animation-delay:  1800ms;
+    animation-iteration-count: 1,infinite;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in,linear;
+
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(360deg);
+
+    }
+    to{
+        transform: rotate(0deg);
+
+    }
+}
+ 
+.brands-section {
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.12);
+    border-radius: 24x;
+    background: $light-color;
+    padding: 32px;
+    margin-top: 100px;
+
+}
+.brands-section .brands-container img {
+    height: 32px;
+    
+}
+.brands-section .brands-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+.brands-section h2, section h2{
+    font-family: "Montserrat",sans-serif;
+    font-size: 32px;
+    color: $dark-color;
+    margin-bottom: 48px;
+    text-align: center;
+    position: relative;
+}
+
+.brands-section h2::after,section h2::after {
+    content: "";
+    width: 43px;
+    height: 3px;
+    position: absolute;
+    background: $red-color;
+    top: 40px;
+    transform: translateX(-43px);
+
+}
+
+.about-section .section-content {
+    display: flex; 
+}
+
+.about-section .section-content img{
+    margin-left: 100px;
+}
+/* Project section */
+
+.projects-gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap : 40px 18px;
+    margin-bottom: 42px;
+
+}
+.projects-gallery img{
+    width: 100%;
+    object-fit: cover;
+
+}

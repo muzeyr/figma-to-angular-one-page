@@ -119,6 +119,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "figma-to-angular-one-page"
+    }
+  },
+  "defaultProject": "figma-to-angular-one-page",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
